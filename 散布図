@@ -1,0 +1,37 @@
+function drawScatter(sample){
+
+let data=
+sample.map(p=>({
+
+x:Number(p.年齢),
+
+y:Number(p.身長_cm)
+
+}));
+
+if(scatterChart)
+scatterChart.destroy();
+
+scatterChart=
+new Chart(
+document.getElementById("scatter"),
+{
+type:'scatter',
+
+data:{
+
+datasets:[{
+
+label:
+'年齢×身長',
+
+data:data
+
+}]
+
+}
+
+}
+);
+
+}
