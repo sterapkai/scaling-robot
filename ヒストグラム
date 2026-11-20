@@ -1,0 +1,38 @@
+function drawHistogram(sample){
+
+const data=
+sample.map(
+p=>Number(p.身長_cm)
+);
+
+const bins={};
+
+data.forEach(v=>{
+
+let key=
+Math.floor(v/5)*5;
+
+bins[key]=
+(bins[key]||0)+1;
+
+});
+
+if(histChart)
+histChart.destroy();
+
+histChart=
+new Chart(
+document.getElementById("histogram"),
+{
+type:"bar",
+data:{
+labels:Object.keys(bins),
+datasets:[{
+label:"人数",
+data:Object.values(bins)
+}]
+}
+}
+);
+
+}
