@@ -105,3 +105,73 @@ drawHistogram(sample);
 drawScatter(sample);
 
 }
+
+function showStatistics(sample){
+
+let totalHeight=0;
+
+let totalSleep=0;
+
+let totalWork=0;
+
+sample.forEach(p=>{
+
+totalHeight +=
+Number(p.身長_cm);
+
+totalSleep +=
+Number(p.睡眠時間_h);
+
+totalWork +=
+Number(p.労働学業時間_h);
+
+});
+
+const avgHeight=
+totalHeight/sample.length;
+
+const avgSleep=
+totalSleep/sample.length;
+
+const avgWork=
+totalWork/sample.length;
+
+const error=
+Math.abs(
+avgHeight-
+trueMeanHeight
+);
+
+document
+.getElementById("result")
+.innerHTML=
+
+`
+<h3>標本サイズ
+${sample.length}</h3>
+
+母平均身長
+${trueMeanHeight.toFixed(2)}cm
+
+<br><br>
+
+標本平均身長
+${avgHeight.toFixed(2)}cm
+
+<br><br>
+
+誤差
+${error.toFixed(2)}cm
+
+<br><br>
+
+平均睡眠時間
+${avgSleep.toFixed(2)}時間
+
+<br><br>
+
+平均労働・学業時間
+${avgWork.toFixed(2)}時間
+`;
+
+}
